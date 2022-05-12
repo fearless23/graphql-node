@@ -5,8 +5,8 @@ const all_users = [
   { user_id: '3', first_name: 'Williams', email: 'williams@gmail.com' },
 ];
 
-export const get_user = async (root, args, context) => {
-  const method = get_user.name;
+export const get_users = async (root, args, context) => {
+  const method = get_users.name;
   const logger = context._logger.child({ method });
 
   const params = args.params || {};

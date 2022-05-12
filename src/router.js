@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import health from 'express-healthcheck';
 import { create_logger } from './logger.js'
 import { get_graphql_http } from './graphql/index.js';
+import { get_locations, get_weather, get_weather_of_city } from './weather_api/index.js';
 
 const router = express.Router();
 
@@ -20,10 +21,8 @@ router.use(express.urlencoded({ extended: false }));
 router.use(express.json());
 router.use('/healthcheck', health());
 router.use(intercept);
-router.use(`/rest-api`, (request, response) => {
-  const logger = request._logger;
-  logger.info({ abd: 2 }, 'some title');
-  response.status(200).json({ message: 'Hello World' });
+router.use(`/rest-api`, async (request, response) => {
+  response.status(200).json({ message: 'hello world' });
 });
 router.use('/graphql', get_graphql_http())
 
