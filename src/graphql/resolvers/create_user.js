@@ -1,10 +1,13 @@
-export const create_user = async (root, args, context) => {
-  const method = get_user.name;
-  const logger = context._logger.new_child({ method });
+export const create_user = async (root, args, request) => {
+  const method = create_user.name;
+  const logger = request._logger.child({ method });
+
+  const { user, client_id } = args.params || {};
+  logger.info({ user, client_id }, 'params');
 
   return {
-    status: 'created',
+    status: client_id ? `requested from ${client_id}`: 'created',
     code: '100',
-    user: { user_id: '213', name: 'John', email: 'gg@gmial.cpm' }
+    user: user
   }
 };

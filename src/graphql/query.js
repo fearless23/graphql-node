@@ -5,10 +5,10 @@ import { RESOLVERS } from './resolvers/index.js';
 const { GraphQLObjectType } = graphql;
 
 export const api_query = new GraphQLObjectType({
-  name: 'api_query',
+  name: 'RootQuery',
   description: 'This is a root query',
   fields: {
-    users: {
+    get_users: {
       description:'This is a user query',
       type: TYPES.get_users.output,
       args: TYPES.get_users.input,

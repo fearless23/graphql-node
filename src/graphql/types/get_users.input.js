@@ -1,7 +1,8 @@
 import graphql from 'graphql';
-const { GraphQLString, GraphQLInputObjectType, GraphQLBoolean } = graphql;
 
-export const get_users_input = new GraphQLInputObjectType({
+const { GraphQLString, GraphQLInputObjectType, GraphQLNonNull } = graphql;
+
+const get_users_input = new GraphQLInputObjectType({
   name: 'get_user_input',
   description: 'represents the request to get users',
   fields: () => {
@@ -33,3 +34,10 @@ export const get_users_input = new GraphQLInputObjectType({
     };
   }
 });
+
+export const get_users_args = {
+  params: {
+    description: 'Input to get users',
+    type: new GraphQLNonNull(get_users_input)
+  }
+};

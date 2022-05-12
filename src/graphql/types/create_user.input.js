@@ -1,6 +1,6 @@
 import graphql from 'graphql';
 
-const { GraphQLInputObjectType, GraphQLString, GraphQLBoolean } = graphql;
+const { GraphQLInputObjectType, GraphQLString, GraphQLBoolean, GraphQLNonNull } = graphql;
 
 const user_input = new GraphQLInputObjectType({
   name: 'user_input',
@@ -35,7 +35,7 @@ const user_input = new GraphQLInputObjectType({
   }
 });
 
-export const create_user_input = new GraphQLInputObjectType({
+const create_user_input = new GraphQLInputObjectType({
   name: 'create_user_input',
   description: 'represents the request to create a user',
   fields: () => {
@@ -57,3 +57,11 @@ export const create_user_input = new GraphQLInputObjectType({
     };
   }
 });
+
+export const create_user_args = {
+  params: {
+    description: 'Input to create user',
+    type: new GraphQLNonNull(create_user_input)
+  }
+};
+
