@@ -11,4 +11,4 @@ const params = {
   resolver,
 };
 
-export const weather = create_query(params);
+export const users = create_query(params);

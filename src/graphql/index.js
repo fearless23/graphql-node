@@ -1,9 +1,7 @@
-import graphql from 'graphql';
 import pkg from 'express-graphql';
-import { api_query as query } from './query.js';
-import { api_mutation as mutation } from './mutation.js';
-
-const { GraphQLSchema } = graphql;
+import { GraphQLSchema } from 'graphql';
+import { query } from './queries/index.js';
+import { mutation } from './mutations/index.js';
 
 export const get_graphql_http = () => {
   const graphql_schema = new GraphQLSchema({ query, mutation });

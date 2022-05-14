@@ -1,17 +1,17 @@
 import { GraphQLObjectType } from 'graphql';
 
 // QUERIES
-import { weather } from './weather/index.js';
-import { locations_weather } from './locations_weather/index.js';
 import { users } from './users/index.js';
+import { weather } from './weather/index.js';
 import { locations } from './locations/index.js';
+import { locations_weather } from './locations_weather/index.js';
 
-export const api_query = new GraphQLObjectType({
+export const query = new GraphQLObjectType({
   name: 'query',
   fields: {
     users,
-    locations,
     weather,
+    locations,
     locations_weather,
   },
 });
