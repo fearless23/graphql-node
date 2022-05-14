@@ -34,7 +34,7 @@ export const user = new GraphQLObjectType({
       phone: {
         type: GraphQLString,
         resolve: user => user.phone
-      },  
+      },
       is_active: {
         type: GraphQLBoolean,
         resolve: user => user.is_active

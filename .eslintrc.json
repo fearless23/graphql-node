@@ -1,0 +1,69 @@
+{
+  "extends": [
+    "standard",
+    "plugin:import/recommended",
+    "plugin:node/recommended-module",
+    "plugin:promise/recommended"
+  ],
+  "rules": {
+    "semi": [
+      "error",
+      "always"
+    ],
+    "camelcase": "off",
+    "comma-dangle": "off",
+    "indent": [
+      "error",
+      2
+    ],
+    "prefer-const": [
+      "error",
+      {
+        "destructuring": "any",
+        "ignoreReadBeforeAssign": false
+      }
+    ],
+    "max-params": [
+      "error",
+      3
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "ignoreTrailingComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "import/no-unresolved": [
+      2,
+      {
+        "commonjs": true
+      }
+    ],
+    "import/no-absolute-path": [
+      2,
+      {
+        "commonjs": false
+      }
+    ],
+    "import/no-self-import": 2,
+    "import/no-cycle": [
+      2,
+      {
+        "maxDepth": 1
+      }
+    ]
+  },
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  }
+}

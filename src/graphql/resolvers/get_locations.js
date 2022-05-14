@@ -12,5 +12,5 @@ export const get_locations = async (root, args, request) => {
   return {
     city,
     data: locations,
-  }
+  };
 };

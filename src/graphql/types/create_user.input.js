@@ -41,7 +41,7 @@ const create_user_input = new GraphQLInputObjectType({
   fields: () => {
     return {
       client_id: {
-        description: 'client_id of the caller', 
+        description: 'client_id of the caller',
         // frb app iOS, frb app Android, frb app web, frb app mobile
         type: GraphQLString
       },
@@ -64,4 +64,3 @@ export const create_user_args = {
     type: new GraphQLNonNull(create_user_input)
   }
 };
-

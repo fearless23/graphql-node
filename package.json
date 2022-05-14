@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
   "keywords": [],
   "author": "",
   "type": "module",
@@ -20,6 +17,23 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "dotenv": "^16.0.1",
+    "eslint": "^8.15.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
     "pino-pretty": "^7.6.1"
+  },
+  "engines": {
+    "node": ">=14.16.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node -r dotenv/config index.js",
+    "debug": "node -r dotenv/config --inspect-brk=25529",
+    "lint": "./node_modules/.bin/eslint . --ext .js",
+    "lint-fix": "./node_modules/.bin/eslint . --ext .js --fix"
   }
 }

@@ -4,4 +4,4 @@ import { location } from './location.js';
 
 export {
   user, weather, location
-}
+};

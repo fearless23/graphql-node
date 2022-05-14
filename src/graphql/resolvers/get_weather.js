@@ -6,11 +6,11 @@ export const get_weather = async (root, args, request) => {
 
   const { latitude, longitude } = args || {};
   logger.info({ latitude, longitude }, 'args');
-  const weather = await get_weather_api({ lat: latitude, lon: longitude })
+  const weather = await get_weather_api({ lat: latitude, lon: longitude });
 
   return {
     latitude,
     longitude,
     weather,
-  }
+  };
 };

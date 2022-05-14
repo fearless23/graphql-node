@@ -1,6 +1,6 @@
 import pino from 'pino';
 
-export const create_logger = (minimum_log_level='') => {
+export const create_logger = (minimum_log_level = '') => {
   return pino({
     base: { },
     formatters: {
@@ -19,5 +19,5 @@ export const create_logger = (minimum_log_level='') => {
         colorize: true
       }
     }
-  })
-}
+  });
+};

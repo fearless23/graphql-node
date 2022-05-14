@@ -6,8 +6,8 @@ export const create_user = async (root, args, request) => {
   logger.info({ user, client_id }, 'params');
 
   return {
-    status: client_id ? `requested from ${client_id}`: 'created',
+    status: client_id ? `requested from ${client_id}` : 'created',
     code: '100',
-    user: user
-  }
+    user
+  };
 };

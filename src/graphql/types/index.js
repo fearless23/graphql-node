@@ -26,4 +26,4 @@ export const TYPES = {
   get_locations_weather: {
     output: get_locations_weather_output
   }
-}
+};

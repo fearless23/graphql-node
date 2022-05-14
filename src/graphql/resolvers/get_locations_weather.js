@@ -8,9 +8,9 @@ export const get_locations_weather = async (root, args, request) => {
   logger.info({ city }, 'args');
 
   const data = await get_weather_of_city({ city });
-  
+
   return {
     city,
     data
-  }
+  };
 };

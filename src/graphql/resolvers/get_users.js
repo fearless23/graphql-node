@@ -24,5 +24,5 @@ export const get_users = async (root, args, context) => {
   return {
     users,
     count: users.length,
-  }
+  };
 };
