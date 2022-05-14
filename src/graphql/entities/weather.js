@@ -7,9 +7,6 @@ export const weather = new GraphQLObjectType({
     return {
       latitude: { type: GraphQLFloat },
       longitude: { type: GraphQLFloat },
-      // name: { type: GraphQLString },
-      // state: { type: GraphQLString },
-      // country: { type: GraphQLString },
       id: { type: GraphQLInt },
       visibility: { type: GraphQLFloat },
       timezone: { type: GraphQLFloat },
@@ -26,14 +23,8 @@ export const weather = new GraphQLObjectType({
       wind_speed: { type: GraphQLFloat },
       wind_deg: { type: GraphQLFloat },
       wind_gust: { type: GraphQLFloat },
-      sunrise: {
-        type: GraphQLString,
-        resolve: (i) => i.sunrise && new Date(i.sunrise * 1000).toLocaleString(),
-      },
-      sunset: {
-        type: GraphQLString,
-        resolve: (i) => i.sunset && new Date(i.sunset * 1000).toLocaleString(),
-      },
+      sunrise: { type: GraphQLString },
+      sunset: { type: GraphQLString },
       clouds: { type: GraphQLFloat },
     };
   },

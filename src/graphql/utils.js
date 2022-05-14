@@ -1,3 +1,4 @@
+import { parse_error } from '../utils.js';
 import { GraphQLNonNull, GraphQLObjectType, GraphQLInputObjectType, GraphQLString } from 'graphql';
 
 export const query_input = (query_name, fields, options = {}) => {
@@ -27,7 +28,14 @@ export const query_output = (query_name, fields) => {
         type: GraphQLString,
         description: 'message of query',
       },
-      data: new GraphQLObjectType(fields),
+      data: {
+        type: new GraphQLObjectType({
+          name: `${query_name}_output_data`,
+          description: `data for ${query_name} query`,
+          fields,
+        }),
+        description: `data for ${query_name} query`,
+      },
     },
   });
   return output;
@@ -54,7 +62,8 @@ export const query_resolver = (query_name, resolver_function) => async (root, ar
       data: output.data,
     };
   } catch (error) {
-    logger.error(error, method);
+    error.message = `[${method}] - ${error.message}`;
+    logger.error(parse_error(error, method), method);
     return {
       status: 'fail',
       code: error.code || '100',
@@ -100,7 +109,14 @@ export const mutation_output = (mutation_name, fields) => {
         type: GraphQLString,
         description: 'message explaining the status of mutation',
       },
-      data: new GraphQLObjectType(fields),
+      data: {
+        type: new GraphQLObjectType({
+          name: `${mutation_name}_output_data`,
+          description: `data for ${mutation_name} mutation`,
+          fields,
+        }),
+        description: `data for ${mutation_name} mutation`,
+      },
     },
   });
   return output;
@@ -128,7 +144,8 @@ export const mutation_resolver = (mutation_name, resolver_function) => async (ro
       data: output.data,
     };
   } catch (error) {
-    logger.error(error, method);
+    error.message = `[${method}] - ${error.message}`;
+    logger.error(parse_error(error, method), method);
     return {
       status: 'fail',
       code: error.code || '100',

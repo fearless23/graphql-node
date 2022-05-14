@@ -4,6 +4,8 @@ const API_KEY = 'df2707ff1e0d7961ac3582ca86e0dee5';
 const LOC_URL = `http://api.openweathermap.org/geo/1.0/direct?appid=${API_KEY}`;
 const WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}`;
 
+const unix_to_utc = (x) => x && new Date(x * 1000).toISOString();
+
 export const get_locations = async ({ city, state, country } = {}) => {
   try {
     let q = city;
@@ -27,7 +29,7 @@ export const get_locations = async ({ city, state, country } = {}) => {
       country: x.country,
     }));
   } catch (error) {
-    error.message = `[${get_locations.name}] ${error.message}`;
+    error.message = `[${get_locations.name}] - ${error.message}`;
     throw error;
   }
 };
@@ -84,12 +86,12 @@ export const get_weather = async ({ latitude, longitude } = {}) => {
       wind_speed: speed, // : 4.87,
       wind_deg: deg, // : 293,
       wind_gust: gust,
-      sunrise, // : 1652486681,
-      sunset,
+      sunrise: unix_to_utc(sunrise), // : 1652486681,
+      sunset: unix_to_utc(sunset),
       clouds,
     };
   } catch (error) {
-    error.message = `[${get_weather.name}] ${error.message}`;
+    error.message = `[${get_weather.name}] - ${error.message}`;
     throw error;
   }
 };
@@ -101,14 +103,11 @@ export const get_weather_of_city = async ({ city, state, country }) => {
     for (const location of locations) {
       const { latitude, longitude } = location;
       const weather = await get_weather({ latitude, longitude });
-      data.push({
-        ...location,
-        ...weather,
-      });
+      data.push({ location, weather });
     }
     return data;
   } catch (error) {
-    error.message = `[${get_weather_of_city.name}] ${error.message}`;
+    error.message = `[${get_weather_of_city.name}] - ${error.message}`;
     throw error;
   }
 };

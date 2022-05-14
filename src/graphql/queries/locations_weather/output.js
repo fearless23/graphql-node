@@ -1,5 +1,14 @@
-import { GraphQLList, GraphQLString } from 'graphql';
-import { weather } from '../../entities/index.js';
+import { GraphQLList, GraphQLObjectType, GraphQLString } from 'graphql';
+import { weather, location } from '../../entities/index.js';
+
+const weather_location = new GraphQLObjectType({
+  name: 'weather_location',
+  description: 'weather and location entities combined',
+  fields: {
+    weather: { type: weather },
+    location: { type: location },
+  },
+});
 
 export const output = {
   city: {
@@ -7,7 +16,7 @@ export const output = {
     description: 'city for which query was performed',
   },
   weather_data: {
-    type: GraphQLList(weather),
+    type: GraphQLList(weather_location),
     description: 'weather data of locations',
   },
 };

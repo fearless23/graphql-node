@@ -2,9 +2,7 @@ import express from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import health from 'express-healthcheck';
 import { create_logger } from './logger.js';
-import { get_graphql_http } from './graphql/index.js';
-
-const router = express.Router();
+import { graphql_api } from './graphql/index.js';
 
 const intercept = async (request, response, next) => {
   const request_id = uuidv4(); // unique request_id
@@ -15,14 +13,15 @@ const intercept = async (request, response, next) => {
   next();
 };
 
-// Express Middleware
+// Standard Express Middlewares
+const router = express.Router();
 router.use(express.urlencoded({ extended: false }));
 router.use(express.json());
 router.use('/healthcheck', health());
 router.use(intercept);
-router.use('/rest-api', async (request, response) => {
+router.use('/test', async (request, response) => {
   response.status(200).json({ message: 'hello world' });
 });
-router.use('/graphql', get_graphql_http());
+router.use('/graphql', graphql_api());
 
 export default router;
