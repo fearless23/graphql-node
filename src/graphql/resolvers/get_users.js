@@ -15,7 +15,7 @@ export const get_users = async (root, args, context) => {
   const user_id = params.user_id;
   const email = params.email;
 
-  const users = all_users.filter(i => {
+  const users = all_users.filter((i) => {
     let valid = false;
     if (user_id) valid = valid || i.user_id === user_id;
     if (email) valid = valid || i.email === email;

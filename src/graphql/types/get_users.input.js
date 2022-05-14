@@ -9,19 +9,19 @@ const get_users_input = new GraphQLInputObjectType({
     return {
       user_id: {
         description: 'user_id of the user',
-        type: GraphQLString
+        type: GraphQLString,
       },
       email: {
         description: 'email of the user',
-        type: GraphQLString
+        type: GraphQLString,
       },
     };
-  }
+  },
 });
 
 export const get_users_args = {
   params: {
     description: 'Input to get users',
-    type: new GraphQLNonNull(get_users_input)
-  }
+    type: new GraphQLNonNull(get_users_input),
+  },
 };

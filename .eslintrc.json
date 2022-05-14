@@ -73,7 +73,10 @@
       }
     ],
     "prettier/prettier": [
-      "error"
+      "error",
+      {
+        "endOfLine": "auto"
+      }
     ],
     "no-console": 1
   }

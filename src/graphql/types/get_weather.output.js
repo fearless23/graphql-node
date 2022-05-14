@@ -15,13 +15,13 @@ export const get_weather_output = new GraphQLObjectType({
       longitude: {
         type: GraphQLString,
         description: 'code of the mutation for create user request',
-        resolve: payload => payload.longitude,
+        resolve: (payload) => payload.longitude,
       },
       weather: {
         type: weather,
         description: 'weather returned as the result of the mutation',
-        resolve: payload => payload.weather
-      }
+        resolve: (payload) => payload.weather,
+      },
     };
-  }
+  },
 });

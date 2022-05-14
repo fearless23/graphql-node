@@ -12,18 +12,18 @@ export const location = new GraphQLObjectType({
       },
       latitude: {
         type: GraphQLFloat,
-        resolve: i => i.lat
+        resolve: (i) => i.lat,
       },
       longitude: {
         type: GraphQLFloat,
-        resolve: i => i.lon
+        resolve: (i) => i.lon,
       },
       country: {
         type: GraphQLString,
       },
       state: {
         type: GraphQLString,
-      }
+      },
     };
-  }
+  },
 });

@@ -11,6 +11,6 @@ export const get_locations_weather = async (root, args, request) => {
 
   return {
     city,
-    data
+    data,
   };
 };

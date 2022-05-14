@@ -11,14 +11,14 @@ const wlData = new GraphQLObjectType({
       weather: {
         type: weather,
         description: 'status of the mutation for create user request',
-        resolve: payload => payload.weather,
+        resolve: (payload) => payload.weather,
       },
       location: {
         type: location,
         description: 'code of the mutation for create user request',
-      }
+      },
     };
-  }
+  },
 });
 
 export const get_locations_weather_output = new GraphQLObjectType({
@@ -29,13 +29,13 @@ export const get_locations_weather_output = new GraphQLObjectType({
       city: {
         type: GraphQLString,
         description: 'status of the mutation for create user request',
-        resolve: payload => payload.city,
+        resolve: (payload) => payload.city,
       },
       data: {
         type: GraphQLList(wlData),
         description: 'code of the mutation for create user request',
-        resolve: payload => payload.data,
-      }
+        resolve: (payload) => payload.data,
+      },
     };
-  }
+  },
 });

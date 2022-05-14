@@ -2,9 +2,9 @@ import pino from 'pino';
 
 export const create_logger = (minimum_log_level = '') => {
   return pino({
-    base: { },
+    base: {},
     formatters: {
-      level (label, number) {
+      level(label, number) {
         return { level: label || number };
       },
     },
@@ -16,8 +16,8 @@ export const create_logger = (minimum_log_level = '') => {
     transport: {
       target: 'pino-pretty',
       options: {
-        colorize: true
-      }
-    }
+        colorize: true,
+      },
+    },
   });
 };

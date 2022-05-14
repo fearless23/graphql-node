@@ -11,14 +11,13 @@ export const get_locations_output = new GraphQLObjectType({
       city: {
         type: GraphQLString,
         description: 'status of the mutation for create user request',
-        resolve: payload => payload.city,
+        resolve: (payload) => payload.city,
       },
       data: {
         type: new GraphQLList(location),
         description: 'code of the mutation for create user request',
-        resolve: payload => payload.data,
+        resolve: (payload) => payload.data,
       },
-
     };
-  }
+  },
 });

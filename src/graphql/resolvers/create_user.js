@@ -8,6 +8,6 @@ export const create_user = async (root, args, request) => {
   return {
     status: client_id ? `requested from ${client_id}` : 'created',
     code: '100',
-    user
+    user,
   };
 };

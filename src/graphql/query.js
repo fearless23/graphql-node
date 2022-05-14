@@ -12,15 +12,15 @@ export const api_query = new GraphQLObjectType({
       description: 'This is a user query',
       type: TYPES.get_users.output,
       args: TYPES.get_users.input,
-      resolve: RESOLVERS.get_users
+      resolve: RESOLVERS.get_users,
     },
     locations: {
       description: 'This is a locations query',
       type: TYPES.get_locations.output,
       args: {
-        city: { type: GraphQLString }
+        city: { type: GraphQLString },
       },
-      resolve: RESOLVERS.get_locations
+      resolve: RESOLVERS.get_locations,
     },
     weather: {
       description: 'This is a weather based on lat/lon query',
@@ -29,15 +29,15 @@ export const api_query = new GraphQLObjectType({
         latitude: { type: GraphQLString },
         longitude: { type: GraphQLString },
       },
-      resolve: RESOLVERS.get_weather
+      resolve: RESOLVERS.get_weather,
     },
     locations_weather: {
       description: 'This is a weather of all locations',
       type: TYPES.get_locations_weather.output,
       args: {
-        city: { type: GraphQLString }
+        city: { type: GraphQLString },
       },
-      resolve: RESOLVERS.get_locations_weather
+      resolve: RESOLVERS.get_locations_weather,
     },
-  }
+  },
 });

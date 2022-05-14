@@ -10,6 +10,6 @@ export const get_graphql_http = () => {
   return pkg.graphqlHTTP({
     schema: graphql_schema,
     pretty: true,
-    graphiql: process.env.NODE_ENV !== 'production'
+    graphiql: process.env.NODE_ENV !== 'production',
   });
 };
