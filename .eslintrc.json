@@ -3,8 +3,23 @@
     "standard",
     "plugin:import/recommended",
     "plugin:node/recommended-module",
-    "plugin:promise/recommended"
+    "plugin:promise/recommended",
+    "plugin:prettier/recommended"
   ],
+  "plugins": [
+    "import",
+    "node",
+    "promise",
+    "prettier"
+  ],
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
   "rules": {
     "semi": [
       "error",
@@ -56,14 +71,7 @@
       {
         "maxDepth": 1
       }
-    ]
-  },
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module"
+    ],
+    "prettier/prettier": ["error"]
   }
 }

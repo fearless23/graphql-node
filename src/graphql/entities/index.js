@@ -3,5 +3,6 @@ import { weather } from './weather.js';
 import { location } from './location.js';
 
 export {
-  user, weather, location
+  user, 
+  weather, location
 };
