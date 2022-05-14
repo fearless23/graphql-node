@@ -1,55 +1,40 @@
-import graphql from 'graphql';
-
-const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLFloat } = graphql;
+import { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLFloat } from 'graphql';
 
 export const weather = new GraphQLObjectType({
-  name: 'Weather',
-  description: 'represents a weather object',
+  name: 'entity_weather',
+  description: 'weather entity',
   fields: () => {
     return {
-      wid: {
-        type: GraphQLInt,
-        resolve: (i) => i.id,
-      },
-      name: {
-        type: GraphQLString,
-      },
-      country: {
-        type: GraphQLString,
-        resolve: (i) => i.sys.country,
-      },
+      latitude: { type: GraphQLFloat },
+      longitude: { type: GraphQLFloat },
+      // name: { type: GraphQLString },
+      // state: { type: GraphQLString },
+      // country: { type: GraphQLString },
+      id: { type: GraphQLInt },
+      visibility: { type: GraphQLFloat },
+      timezone: { type: GraphQLFloat },
+      main: { type: GraphQLString },
+      description: { type: GraphQLString },
+      temp: { type: GraphQLFloat },
+      feels_like: { type: GraphQLFloat },
+      temp_min: { type: GraphQLFloat },
+      temp_max: { type: GraphQLFloat },
+      pressure: { type: GraphQLFloat },
+      humidity: { type: GraphQLFloat },
+      sea_level: { type: GraphQLFloat },
+      grnd_level: { type: GraphQLFloat },
+      wind_speed: { type: GraphQLFloat },
+      wind_deg: { type: GraphQLFloat },
+      wind_gust: { type: GraphQLFloat },
       sunrise: {
         type: GraphQLString,
-        resolve: (i) => i.sys && new Date(i.sys.sunrise * 1000).toLocaleString(),
+        resolve: (i) => i.sunrise && new Date(i.sunrise * 1000).toLocaleString(),
       },
       sunset: {
         type: GraphQLString,
-        resolve: (i) => i.sys && new Date(i.sys.sunset * 1000).toLocaleString(),
+        resolve: (i) => i.sunset && new Date(i.sunset * 1000).toLocaleString(),
       },
-      temp: {
-        type: GraphQLFloat,
-        resolve: (i) => i.main.temp,
-      },
-      feels_like: {
-        type: GraphQLFloat,
-        resolve: (i) => i.main.feels_like,
-      },
-      description: {
-        type: GraphQLString,
-        resolve: (i) => i.weather[0].description,
-      },
-      main: {
-        type: GraphQLString,
-        resolve: (i) => i.weather[0].main,
-      },
-      latitude: {
-        type: GraphQLFloat,
-        resolve: (i) => i.coord.lat,
-      },
-      longitude: {
-        type: GraphQLFloat,
-        resolve: (i) => i.coord.lon,
-      },
+      clouds: { type: GraphQLFloat },
     };
   },
 });

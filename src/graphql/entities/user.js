@@ -1,6 +1,4 @@
-import graphql from 'graphql';
-
-const { GraphQLObjectType, GraphQLString, GraphQLBoolean } = graphql;
+import { GraphQLObjectType, GraphQLString, GraphQLBoolean } from 'graphql';
 
 export const user = new GraphQLObjectType({
   name: 'user',

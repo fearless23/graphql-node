@@ -5,15 +5,8 @@ const all_users = [
   { user_id: '3', first_name: 'Williams', email: 'williams@gmail.com' },
 ];
 
-export const get_users = async (root, args, context) => {
-  const method = get_users.name;
-  const logger = context._logger.child({ method });
-
-  const params = args.params || {};
-  logger.info(params, 'params');
-
-  const user_id = params.user_id;
-  const email = params.email;
+export const resolver = async ({ logger, input }) => {
+  const { user_id, email } = input;
 
   const users = all_users.filter((i) => {
     let valid = false;
@@ -21,8 +14,7 @@ export const get_users = async (root, args, context) => {
     if (email) valid = valid || i.email === email;
     return valid;
   });
-  return {
-    users,
-    count: users.length,
-  };
+  const data = { users, count: users.length };
+
+  return { data };
 };
